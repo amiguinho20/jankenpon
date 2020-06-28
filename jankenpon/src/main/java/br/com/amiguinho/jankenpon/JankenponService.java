@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import br.com.amiguinho.jankenpon.strategy.Jogada;
+
 @Service
 public class JankenponService {
 
@@ -28,7 +30,8 @@ public class JankenponService {
 		JankenponCacheSingleton.getJogadores().add(jogador);
 	}
 	
-	public void incluirJogada(Jogador jogador, JogadaEnum jogada) {
+	//public void incluirJogada(Jogador jogador, JogadaEnum jogada) {
+	public void incluirJogada(Jogador jogador, Jogada jogada) {
 		Set<Jogador> jogadores = JankenponCacheSingleton.getJogadores();
 		if (jogadores.contains(jogador)) {
 			jogador = JankenponCacheSingleton.getJogador(jogador);
@@ -37,7 +40,7 @@ public class JankenponService {
 		}
 		jogador.setJogada(jogada);
 	}
-	
+		
 	public void jogar() {
 
 		Jogador jogadorVencedor = null;
@@ -89,7 +92,7 @@ public class JankenponService {
 		Jogador jogadorVencedor = JankenponCacheSingleton.getJogadorVencedor();
 		String retorno = "EMPATE";
 		if (jogadorVencedor != null) {
-			retorno = "Vencedor: " + jogadorVencedor.getIdentificacao() + " - " + jogadorVencedor.getJogada().name();
+			retorno = "Vencedor: " + jogadorVencedor.getIdentificacao() + " - " + jogadorVencedor.getJogada().getName();
 		}
 		return retorno;
 	}

@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.amiguinho.jankenpon.strategy.Jogada;
+import br.com.amiguinho.jankenpon.strategy.JogadaFactory;
+
 @RestController
 @RequestMapping("/")
 public class JankenponResource {
@@ -24,7 +27,8 @@ public class JankenponResource {
 
 	@GetMapping("/jogadores")
 	public Set<Jogador> consultarJogadores() {
-		return model.consultarJogadores();
+		Set<Jogador> x =  model.consultarJogadores();
+		return x;
 	}
 
 	@GetMapping("/resultado")
@@ -46,7 +50,8 @@ public class JankenponResource {
 	@PutMapping("/jogada/{jogador}/{jogada}")
 	public void incluirJogada(@PathVariable("jogador") String jogador, @PathVariable("jogada") String jogada) {
 		Jogador objJogador = Jogador.criarJogador(jogador);
-		JogadaEnum objJogada = JogadaEnum.criar(jogada);
+		//JogadaEnum objJogada = JogadaEnum.criar(jogada);
+		Jogada objJogada = JogadaFactory.getJogada(jogada);
 		model.incluirJogada(objJogador, objJogada);
 	}
 

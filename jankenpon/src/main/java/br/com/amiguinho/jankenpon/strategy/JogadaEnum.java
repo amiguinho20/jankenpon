@@ -1,4 +1,4 @@
-package br.com.amiguinho.jankenpon;
+package br.com.amiguinho.jankenpon.strategy;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -13,6 +13,7 @@ public enum JogadaEnum {
 
 	private Set<JogadaEnum> fraquezas = null;
 	
+	@Deprecated
 	public static JogadaEnum criar(String codigo) {
 		JogadaEnum jogadorCriado = null;
 		for (JogadaEnum tipo : JogadaEnum.values()) {
@@ -24,6 +25,7 @@ public enum JogadaEnum {
 		return jogadorCriado;
 	}
 
+	@Deprecated
 	public Set<JogadaEnum> getFraquezas() {
 		if (fraquezas == null) {
 			fraquezas = new HashSet<>();

@@ -1,9 +1,12 @@
 package br.com.amiguinho.jankenpon;
 
+import br.com.amiguinho.jankenpon.strategy.Jogada;
+
 public class Jogador {
 
 	private String identificacao;
-	private JogadaEnum jogada;
+//	private JogadaEnum jogada;
+	private Jogada jogada;
 	
 	public Jogador() {}
 	
@@ -23,13 +26,22 @@ public class Jogador {
 		return this;
 	}
 	
-	public JogadaEnum getJogada() {
+//	public JogadaEnum getJogada() {
+//		return jogada;
+//	}
+//	public Jogador setJogada(JogadaEnum jogada) {
+//		this.jogada = jogada;
+//		return this;
+//	}
+
+	public Jogada getJogada() {
 		return jogada;
 	}
-	public Jogador setJogada(JogadaEnum jogada) {
+	public Jogador setJogada(Jogada jogada) {
 		this.jogada = jogada;
 		return this;
 	}
+
 	
 	@Override
 	public int hashCode() {
